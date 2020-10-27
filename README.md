@@ -22,8 +22,9 @@
 ### Things left to do for a first attempt
 * I am currently using "nodegit" which is an interface to the libgit2 library, natively in node.js. It seems that it is very complicated to use, and has powers way beyond our needs. I am going to ditch that and simply call use a shell to control "command line" git from node. (I already do this in some other use cases. I wanted to try out nodegit).
 * use command line git to "git add -A" and "git commit -m" and "git push origin master".  Specifically "git add -A" does a _lot_ of different things, which it is most complicated to try and copy with nodegit.
+* check for pages that have been deleted from the site but were already backed up (does this happen)?
 * unleash the thing on a bigger list of sites (currently only backs up a single site).
-* check for slugs that have been deleted from the site (does this happen)?
+
 
 ### Things to do later
 * work out how to squash commits so that there is a nice coherent history of daily / weekly / monthly / etc... commit history.
