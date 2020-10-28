@@ -10,6 +10,9 @@
     * reads the sitemap.json for the site
     * cycles through all the slug.jsons in the sitemap
       * downloading them and adding them to the /data directory of the local git repository
+      * 300 ms delay between each page download
+      * back off 2s, 4, 8, 16, 32s if http errors are encountered
+        * if the 32s attempt fails (about 1 minute of trying in total), the backup is aborted and will be retried "soon"
       * currently does not delete pages that have been removed from the wiki site
     * makes a new git commit and pushes the commit to the github repository
     * deletes the local repo "when finished".
