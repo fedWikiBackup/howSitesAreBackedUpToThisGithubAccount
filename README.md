@@ -21,7 +21,7 @@
 
 * the tool is built such that multiple site backups can run simultaneously if desired
 
-[![Watch the video](https://img.youtube.com/vi/lQPiEFRNrFs/maxresdefault.jpg | width=200)](https://youtu.be/lQPiEFRNrFs)
+<a href="https://youtu.be/lQPiEFRNrFs"><img src="https://img.youtube.com/vi/lQPiEFRNrFs/maxresdefault.jpg" width="200"/></a>
 
 ### Things left to do for a first attempt
 * [x] ~I am currently using "nodegit" which is an interface to the libgit2 library, natively in node.js. It seems that it is very complicated to use, and has powers way beyond our needs. I am going to ditch that and simply call use a shell to control "command line" git from node. (I already do this in some other use cases. I wanted to try out nodegit).~
