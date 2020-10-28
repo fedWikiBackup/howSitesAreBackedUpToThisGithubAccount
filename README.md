@@ -9,7 +9,7 @@
     * clones the repo onto the disk of the backup server
     * reads the sitemap.json for the site
     * cycles through all the slug.jsons in the sitemap
-      * downloading them and adding them to the /data directory of the github repository
+      * downloading them and adding them to the /data directory of the local git repository
       * currently does not delete pages that have been removed from the wiki site
     * makes a new git commit and pushes the commit to the github repository
     * deletes the local repo "when finished".
