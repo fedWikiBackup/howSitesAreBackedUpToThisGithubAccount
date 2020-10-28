@@ -1,4 +1,4 @@
-# howSitesAreBackedUpToThisRespository
+# howSitesAreBackedUpToThisAccount
 
 * ok, so we have so far
   * a slightly less perfunctory web UI
