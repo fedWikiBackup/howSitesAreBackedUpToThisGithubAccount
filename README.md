@@ -20,9 +20,6 @@
 
 * this is all done defensively, errors are "all" caught, and recorded, most of the way there to dealing with errors in a "sensible" way for an always on backup machine that will recover gracefully in situations of "because internets"
 
-* fetching from the remote server is done gently (300ms time delay)
-  * http errors are dealth with in a "backoff" fashion 2, 4, 8, 16, 32, 64 seconds
-
 * the tool is built such that multiple site backups can run simultaneously if desired
 
 * link to DEMO video so far <a href="https://youtu.be/lQPiEFRNrFs"><img src="https://img.youtube.com/vi/lQPiEFRNrFs/maxresdefault.jpg" width="200"/></a>
