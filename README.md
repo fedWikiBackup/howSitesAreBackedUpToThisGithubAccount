@@ -13,9 +13,10 @@
       * 300 ms delay between each page download
       * back off 2s, 4, 8, 16, 32s if http errors are encountered
         * if the 32s attempt fails (about 1 minute of trying in total), the backup is aborted and will be retried "soon"
-      * currently does not delete pages that have been removed from the wiki site
+      * ~currently does not delete pages that have been removed from the wiki site~
     * makes a new git commit and pushes the commit to the github repository
-    * deletes the local repo "when finished".
+    * deletes the local repo when finished
+    * [ ] writes log to log repo
 
 * this is all done defensively, errors are "all" caught, and recorded, most of the way there to dealing with errors in a "sensible" way for an always on backup machine that will recover gracefully in situations of "because internets"
 
@@ -29,7 +30,7 @@
 ### Things left to do for a first attempt
 * [x] ~I am currently using "nodegit" which is an interface to the libgit2 library, natively in node.js. It seems that it is very complicated to use, and has powers way beyond our needs. I am going to ditch that and simply call use a shell to control "command line" git from node. (I already do this in some other use cases. I wanted to try out nodegit).~
 * [x] use command line git to "git add -A" and "git commit -m" and "git push origin master".  Specifically "git add -A" does a _lot_ of different things, which it is most complicated to try and copy with nodegit.
-* check for pages that have been deleted from the site but were already backed up (does this happen)?
+* [x] check for pages that have been deleted from the site but were already backed up (does this happen)?
 * unleash the thing on a bigger list of sites (currently only backs up a single site).
 
 
