@@ -23,6 +23,7 @@
     * with `githubAPI` uploads the new sitemap.json to `newBranch`
     * with `githubAPI` squash merges `newBranch` into the `main` branch of the github repo
     * with `githubAPI` deletes `newBranch` from the repo
+    * if no updates are necessary, no change is made to the github repo
     
     * ~cycles through all the slug.jsons in the sitemap~
       * ~downloading them and adding them to the /data directory of the local git repository~
