@@ -9,7 +9,7 @@
   * a `applicationConfiguration.backupThisSite.siteDataSummaryBySiteNameDict`
     * which contains timestamps for `lastBackupAttempted` and `lastBackupCompleted` for each site
   * we are part of the way through making the sequence which runs the backup procedure for each site in the collection. Currently that procedure
-    * with `githubAPI`, creates or reads a (public) github repository for a site (in this github account)
+  * with `githubAPI`, creates or reads a (public) github repository for a site (in this github account)
     * ~clones the repo onto the disk of the backup server~
     * with `githubAPI` read the sitemap.json stored in the github repo
       * and to read the list of files in the repo to use as comparison
@@ -24,7 +24,6 @@
     * with `githubAPI` squash merges `newBranch` into the `main` branch of the github repo
     * with `githubAPI` deletes `newBranch` from the repo
     * if no updates are necessary, no change is made to the github repo
-    
     * ~cycles through all the slug.jsons in the sitemap~
       * ~downloading them and adding them to the /data directory of the local git repository~
       * ~currently does not delete pages that have been removed from the wiki site~
