@@ -32,7 +32,8 @@
     * ~makes a new git commit and pushes the commit to the github repository~
     * ~deletes the local repo when finished~
 
-* this is all done defensively, errors are "all" caught, and recorded, most of the way there to dealing with errors in a "sensible" way for an always on backup machine that will recover gracefully in situations of "because internets"
+* this is all done defensively, errors are "all" caught, and recorded, most of the way there (all the way there?) to dealing with errors in a "sensible" way for an always on backup machine that will recover gracefully in situations of "because internets"
+  * assuming that the context that the backup server is running in doesnt break, the backup server should function as expected in all situations, and "pick up where it left off" regardless of internet outages
 
 * hourly backup of all sites
 * backups run on 5 concurrent threads
