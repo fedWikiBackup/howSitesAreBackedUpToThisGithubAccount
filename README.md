@@ -45,9 +45,10 @@
 * [x] - check for pages that have been deleted from the site but were already backed up (does this happen)?
 * [ ] - write log to log repo
 * [x] - unleash the thing on a bigger list of sites (currently only backs up a single site).
+  * currently running on 30 sites out of the 750 or so in the list that I have
 * [x] - make cron type stuff
 * [x] - make it run headless
 
-
 ### Things to do later
-* work out how to squash commits so that there is a nice coherent history of daily / weekly / monthly / etc... commit history.
+* [ ] - work out how to squash commits so that there is a nice coherent history of daily / weekly / monthly / etc... commit history.
+* [ ] - implement some kind of email notification system for when things go wrong
