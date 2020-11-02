@@ -4,19 +4,32 @@
   * a slightly less perfunctory web UI
   * a `sitesToBackupCollection` 
     * which stores data for each site
+    * `siteSpec.siteURL`
+    * `backupThisSite.githubRepoData`
+  * a `applicationConfiguration.backupThisSite.siteDataSummaryBySiteNameDict`
+    * which contains timestamps for `lastBackupAttempted` and `lastBackupCompleted` for each site
   * we are part of the way through making the sequence which runs the backup procedure for each site in the collection. Currently that procedure:
     * creates or reads a (public) github repository for a site (in this github account)
-    * clones the repo onto the disk of the backup server
-    * reads the sitemap.json for the site
-    * cycles through all the slug.jsons in the sitemap
-      * downloading them and adding them to the /data directory of the local git repository
-      * 300 ms delay between each page download
-      * back off 2s, 4, 8, 16, 32s if http errors are encountered
-        * if the 32s attempt fails (about 1 minute of trying in total), the backup is aborted and will be retried "soon"
+    * ~clones the repo onto the disk of the backup server~
+      * uses the github API to read the sitemap.json stored in the github repo
+        * and to read the list of files in the repo to use as comparison
+    * reads the current sitemap.json from the siteURL `/system/sitemap.json`
+    * compares between the current sitemap.json and the github sitemap.json, and also the file tree on github, to determine add / update / delete of pages
+    * adds / updates / deletes pages on a new github branch
+      * downloading new page data from siteURL
+        * 300 ms delay between each page download
+        * back off 2s, 4, 8, 16, 32s if http errors are encountered
+          * if the 32s attempt fails (about 1 minute of trying in total), the backup is aborted and will be retried "soon"
+    * squash merges that branch into `main` of the github repo]
+    * deletes that branch
+    * uploads the new sitemap.json if required
+    
+    * ~cycles through all the slug.jsons in the sitemap~
+      * ~downloading them and adding them to the /data directory of the local git repository~
       * ~currently does not delete pages that have been removed from the wiki site~
-      * removes pages that havebeen deleted from the wiki site
-    * makes a new git commit and pushes the commit to the github repository
-    * deletes the local repo when finished
+      * ~removes pages that havebeen deleted from the wiki site~
+    * ~makes a new git commit and pushes the commit to the github repository~
+    * ~deletes the local repo when finished~
 
 * this is all done defensively, errors are "all" caught, and recorded, most of the way there to dealing with errors in a "sensible" way for an always on backup machine that will recover gracefully in situations of "because internets"
 
