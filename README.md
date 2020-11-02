@@ -14,8 +14,8 @@
     * with `githubAPI` read the sitemap.json stored in the github repo
       * and to read the list of files in the repo to use as comparison
     * reads the current sitemap.json from the siteURL `/system/sitemap.json`
-    * compares between the current sitemap.json and the github sitemap.json, and also the file tree on github, to determine `add` / `update` / `delete` of pages
-    * with `githubAPI` `adds` / `updates` / `deletes` pages on a new github branch `newBranch`
+    * compares between the `current sitemap.json` and the `github sitemap.json`, and also the `file tree on github`, to determine `add` / `update` / `delete` of pages
+    * with `githubAPI`,  `adds` / `updates` / `deletes` pages on a new github branch `newBranch`
       * downloading new page data from siteURL
         * 4000 ms delay between each page download
         * back off 2s, 4, 8, 16, 32s if http errors are encountered
