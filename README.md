@@ -11,18 +11,18 @@
   * we are part of the way through making the sequence which runs the backup procedure for each site in the collection. Currently that procedure:
     * creates or reads a (public) github repository for a site (in this github account)
     * ~clones the repo onto the disk of the backup server~
-      * uses the github API to read the sitemap.json stored in the github repo
+    * uses the github API to read the sitemap.json stored in the github repo
         * and to read the list of files in the repo to use as comparison
     * reads the current sitemap.json from the siteURL `/system/sitemap.json`
     * compares between the current sitemap.json and the github sitemap.json, and also the file tree on github, to determine add / update / delete of pages
     * adds / updates / deletes pages on a new github branch
       * downloading new page data from siteURL
-        * 300 ms delay between each page download
+        * 4000 ms delay between each page download
         * back off 2s, 4, 8, 16, 32s if http errors are encountered
           * if the 32s attempt fails (about 1 minute of trying in total), the backup is aborted and will be retried "soon"
+    * uploads the new sitemap.json if required
     * squash merges that branch into `main` of the github repo]
     * deletes that branch
-    * uploads the new sitemap.json if required
     
     * ~cycles through all the slug.jsons in the sitemap~
       * ~downloading them and adding them to the /data directory of the local git repository~
@@ -33,7 +33,8 @@
 
 * this is all done defensively, errors are "all" caught, and recorded, most of the way there to dealing with errors in a "sensible" way for an always on backup machine that will recover gracefully in situations of "because internets"
 
-* the tool is built such that multiple site backups can run simultaneously if desired
+* hourly backup of all sites
+* backups run on 5 concurrent threads
 
 * link to DEMO video so far <a href="https://youtu.be/lQPiEFRNrFs"><img src="https://img.youtube.com/vi/lQPiEFRNrFs/maxresdefault.jpg" width="200"/></a>
 
@@ -42,9 +43,9 @@
 * [x] - use command line git to "git add -A" and "git commit -m" and "git push origin master".  Specifically "git add -A" does a _lot_ of different things, which it is most complicated to try and copy with nodegit.
 * [x] - check for pages that have been deleted from the site but were already backed up (does this happen)?
 * [ ] - write log to log repo
-* [ ] - unleash the thing on a bigger list of sites (currently only backs up a single site).
-* [ ] - make cron type stuff
-* [ ] - make it run headless
+* [x] - unleash the thing on a bigger list of sites (currently only backs up a single site).
+* [x] - make cron type stuff
+* [x] - make it run headless
 
 
 ### Things to do later
